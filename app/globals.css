@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #03060f;
+  color: #e6edf9;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #1e7bff 0%, #22d3ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-3 rounded-full border border-cyan/60 bg-gradient-to-r from-brand to-[#1590ff] px-6 py-3.5 font-bold text-white shadow-glow transition hover:brightness-110 active:scale-[.98];
+}
+
+.btn-zap {
+  @apply inline-flex items-center justify-center gap-3 rounded-full border border-[#7dffae]/60 bg-gradient-to-r from-[#16a34a] to-zap px-6 py-3.5 font-bold text-white shadow-zap transition hover:brightness-110 active:scale-[.98];
+}
+
+.card {
+  @apply rounded-2xl border border-brand/30 bg-panel/60 backdrop-blur;
+}
