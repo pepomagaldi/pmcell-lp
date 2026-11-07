@@ -15,20 +15,16 @@ const brl = (n: number) => `R$ ${n.toLocaleString("pt-BR")}`;
 
 function Logo() {
   return (
-    <a href="#inicio" className="flex items-center gap-2.5" aria-label="PM Cell Vacaria">
-      <svg viewBox="0 0 40 40" className="h-9 w-9 text-white" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-        <rect x="12" y="12" width="16" height="16" rx="2" fill="#0a1530" />
-        <path d="M16 12V6M24 12V6M16 28v6M24 28v6M12 16H6M12 24H6M28 16h6M28 24h6" />
-        <circle cx="16" cy="5" r="1.6" /><circle cx="24" cy="5" r="1.6" />
-        <circle cx="16" cy="35" r="1.6" /><circle cx="24" cy="35" r="1.6" />
-        <circle cx="5" cy="16" r="1.6" /><circle cx="5" cy="24" r="1.6" />
-        <circle cx="35" cy="16" r="1.6" /><circle cx="35" cy="24" r="1.6" />
-      </svg>
-      <span className="leading-none">
-        <span className="block text-2xl font-black italic tracking-tight text-gradient">PM</span>
-        <span className="block text-[10px] font-bold tracking-[.25em] text-white">CELL</span>
-        <span className="block text-[8px] font-semibold tracking-[.3em] text-cyan">VACARIA</span>
-      </span>
+    <a href="#inicio" className="flex items-center" aria-label="PM Cell Vacaria">
+      <Image
+        src="/images/logo-horizontal.png"
+        alt="PM Cell Vacaria"
+        width={745}
+        height={329}
+        priority
+        sizes="140px"
+        className="h-11 w-auto sm:h-12"
+      />
     </a>
   );
 }
