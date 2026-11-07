@@ -24,25 +24,34 @@ export default function ScrollReveal() {
     );
     els.forEach((el) => io.observe(el));
 
-    // Parallax suave na foto do topo
+    // Parallax suave na foto do topo (com amortecimento para não "pular")
     const par = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
+    let target = window.scrollY;
+    let current = target;
+    let raf = 0;
+    const loop = () => {
+      current += (target - current) * 0.08;
+      if (Math.abs(target - current) < 0.1) current = target;
+      if (current < window.innerHeight * 1.2) {
         par.forEach((el) => {
-          if (y < window.innerHeight * 1.2) el.style.transform = `translate3d(0, ${y * 0.18}px, 0) scale(${1 - y * 0.00012})`;
+          el.style.transform = `translate3d(0, ${(current * 0.1).toFixed(2)}px, 0) scale(${(1 - current * 0.00006).toFixed(4)})`;
         });
-        ticking = false;
-      });
+      }
+      raf = current === target ? 0 : requestAnimationFrame(loop);
     };
-    if (par.length) window.addEventListener("scroll", onScroll, { passive: true });
+    const onScroll = () => {
+      target = window.scrollY;
+      if (!raf) raf = requestAnimationFrame(loop);
+    };
+    if (par.length) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
 
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
