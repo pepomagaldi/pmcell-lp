@@ -257,11 +257,11 @@ function Testimonials() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="card p-5">
+            <figure key={t.name} className="card flex flex-col p-5">
               <span className="text-3xl font-black text-brand">“</span>
-              <blockquote className="text-sm text-slate-200">{t.text}</blockquote>
+              <blockquote className="flex-1 text-sm text-slate-200">{t.text}</blockquote>
               <p className="mt-3 text-yellow-400" aria-label="5 estrelas">★★★★★</p>
-              <figcaption className="mt-1 text-sm text-slate-300">{t.name}</figcaption>
+              <figcaption className="mt-1 text-sm text-slate-300">{t.name} <span className="text-slate-500">· avaliação no Google</span></figcaption>
             </figure>
           ))}
         </div>

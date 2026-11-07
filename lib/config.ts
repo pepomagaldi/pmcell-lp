@@ -3,7 +3,7 @@
 // ============================================================
 
 // Número do WhatsApp com DDI + DDD, só dígitos. Ex.: 5554999998888
-export const WHATSAPP_NUMBER = "5554000000000"; // TODO: trocar pelo número real
+export const WHATSAPP_NUMBER = "5554996899213";
 
 export function whatsappUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -85,7 +85,20 @@ export const TRUST_ITEMS = [
 
 // Depoimentos: coloque SÓ avaliações reais (ex.: copiadas do Google).
 // Enquanto a lista estiver vazia, a seção não aparece na página.
-export const TESTIMONIALS: { text: string; name: string }[] = [];
+export const TESTIMONIALS: { text: string; name: string }[] = [
+  {
+    text: "Ótimo atendimento, sem enrolação, muito bom. Recomendo! Se precisar, voltarei com certeza.",
+    name: "Franciane R.",
+  },
+  {
+    text: "Já somos clientes há um bom tempo. Super educado, ótimo trabalho, com valores honestos e serviços realizados em pouquíssimo tempo com muita qualidade. Está de parabéns pelo atendimento e serviço realizado.",
+    name: "Anderson B.",
+  },
+  {
+    text: "O trabalho é simplesmente top! No começo confesso que estava com medo de entregar o telefone, mas agora super recomendo, tanto que já indiquei para várias pessoas. Parabéns pelo excelente trabalho e agilidade.",
+    name: "Luciane O.",
+  },
+];
 
 // Link das avaliações no Google (opcional). Aparece se preenchido.
 export const GOOGLE_REVIEWS_URL = "";
