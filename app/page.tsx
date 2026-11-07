@@ -1,6 +1,7 @@
 import Image from "next/image";
 import WhatsAppLink from "@/components/WhatsAppLink";
 import ScrollReveal from "@/components/ScrollReveal";
+import QuoteForm from "@/components/QuoteForm";
 import { Arrow, Check, Icon, Whats } from "@/components/Icons";
 import {
   BLINDAGEM_PLANS,
@@ -32,9 +33,9 @@ function Logo() {
 
 function Header() {
   const links = [
+    ["Orçamento", "#orcamento"],
     ["Serviços", "#servicos"],
     ["Blindagem", "#blindagem"],
-    ["Diferenciais", "#diferenciais"],
     ["Contato", "#contato"],
   ];
   return (
@@ -69,11 +70,12 @@ function Hero() {
         <div className="pb-10 md:pb-20">
           <p data-reveal className="mb-3 text-xs font-bold tracking-[.35em] text-cyan">PM CELL VACARIA</p>
           <h1 data-reveal data-delay="1" className="text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-            Assistência Técnica
-            <span className="block font-black italic text-gradient">Especializada</span>
+            Seu celular consertado
+            <span className="block font-black italic text-gradient">sem sair de casa</span>
           </h1>
           <p data-reveal data-delay="2" className="mt-5 max-w-lg text-lg text-slate-300">
-            Reparos, blindagem e manutenção completa para o seu smartphone, com qualidade, segurança e garantia.
+            A gente busca, conserta com garantia de 90 dias e devolve na sua mão, em Vacaria. Tela, bateria, traseira,
+            conector e blindagem.
           </p>
           <ul data-reveal data-delay="3" className="mt-7 grid max-w-lg grid-cols-3 gap-3">
             {HERO_BADGES.map((b) => (
@@ -83,9 +85,9 @@ function Hero() {
               </li>
             ))}
           </ul>
-          <WhatsAppLink message={GENERIC_MSG} source="hero" reveal className="btn-primary mt-8 w-full text-lg sm:w-auto">
-            <Whats className="h-6 w-6" /> Solicitar Orçamento Agora <Arrow className="h-5 w-5" />
-          </WhatsAppLink>
+          <a href="#orcamento" data-reveal data-delay="4" className="btn-primary mt-8 w-full text-lg sm:w-auto">
+            Fazer meu orçamento <Arrow className="h-5 w-5" />
+          </a>
         </div>
         <div data-reveal="zoom" data-delay="2" className="relative mx-auto w-full max-w-md md:max-w-none">
           <Image
@@ -99,6 +101,36 @@ function Hero() {
             className="relative z-10 h-auto w-full drop-shadow-[0_0_40px_rgba(30,123,255,.35)]"
           />
           <div className="absolute inset-x-0 bottom-0 z-20 h-24 bg-gradient-to-t from-ink to-transparent" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Quote() {
+  return (
+    <section id="orcamento" className="relative scroll-mt-20 border-t border-brand/20 py-16">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(37,211,102,.10),transparent_60%)]" />
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2">
+        <div data-reveal="left">
+          <p className="mb-3 text-xs font-bold tracking-[.35em] text-cyan">ORÇAMENTO EM 30 SEGUNDOS</p>
+          <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            Diga o modelo e o problema.
+            <span className="block font-black italic text-gradient">A gente responde com o preço.</span>
+          </h2>
+          <p className="mt-4 text-slate-300">
+            Preencha ao lado e o WhatsApp abre com tudo já escrito. É só apertar enviar.
+          </p>
+          <ul className="mt-6 space-y-2 text-slate-200">
+            {["Orçamento sem compromisso", "Busca e entrega grátis em Vacaria", "Garantia de 90 dias no serviço"].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <Check className="h-5 w-5 shrink-0 text-zap" /> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div data-reveal="right" data-delay="1">
+          <QuoteForm />
         </div>
       </div>
     </section>
@@ -330,6 +362,7 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
+        <Quote />
         <Services />
         <Blindagem />
         <Trust />
