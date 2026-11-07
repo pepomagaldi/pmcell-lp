@@ -12,16 +12,18 @@ type Props = {
   message: string;
   source: string;
   className?: string;
+  reveal?: boolean;
   children: React.ReactNode;
 };
 
-export default function WhatsAppLink({ message, source, className, children }: Props) {
+export default function WhatsAppLink({ message, source, className, reveal, children }: Props) {
   return (
     <a
       href={whatsappUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
+      {...(reveal ? { "data-reveal": "", "data-delay": "4" } : {})}
       onClick={() => {
         try {
           window.fbq?.("track", "Contact", { content_name: source });

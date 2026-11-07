@@ -1,5 +1,6 @@
 import Image from "next/image";
 import WhatsAppLink from "@/components/WhatsAppLink";
+import ScrollReveal from "@/components/ScrollReveal";
 import { Arrow, Check, Icon, Whats } from "@/components/Icons";
 import {
   BLINDAGEM_PLANS,
@@ -66,15 +67,15 @@ function Hero() {
       <div className="pointer-events-none absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-brand/20 blur-3xl" />
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-end gap-6 px-4 pt-10 md:grid-cols-[1.1fr_1fr] md:pt-16">
         <div className="pb-10 md:pb-20">
-          <p className="mb-3 text-xs font-bold tracking-[.35em] text-cyan">PM CELL VACARIA</p>
-          <h1 className="text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+          <p data-reveal className="mb-3 text-xs font-bold tracking-[.35em] text-cyan">PM CELL VACARIA</p>
+          <h1 data-reveal data-delay="1" className="text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
             Assistência Técnica
             <span className="block font-black italic text-gradient">Especializada</span>
           </h1>
-          <p className="mt-5 max-w-lg text-lg text-slate-300">
+          <p data-reveal data-delay="2" className="mt-5 max-w-lg text-lg text-slate-300">
             Reparos, blindagem e manutenção completa para o seu smartphone, com qualidade, segurança e garantia.
           </p>
-          <ul className="mt-7 grid max-w-lg grid-cols-3 gap-3">
+          <ul data-reveal data-delay="3" className="mt-7 grid max-w-lg grid-cols-3 gap-3">
             {HERO_BADGES.map((b) => (
               <li key={b.icon} className="flex items-center gap-2 text-sm leading-tight text-slate-200">
                 <Icon name={b.icon} className={`h-8 w-8 shrink-0 ${b.icon === "truck" ? "text-zap" : "text-brand"}`} />
@@ -82,12 +83,13 @@ function Hero() {
               </li>
             ))}
           </ul>
-          <WhatsAppLink message={GENERIC_MSG} source="hero" className="btn-primary mt-8 w-full text-lg sm:w-auto">
+          <WhatsAppLink message={GENERIC_MSG} source="hero" reveal className="btn-primary mt-8 w-full text-lg sm:w-auto">
             <Whats className="h-6 w-6" /> Solicitar Orçamento Agora <Arrow className="h-5 w-5" />
           </WhatsAppLink>
         </div>
-        <div className="relative mx-auto w-full max-w-md md:max-w-none">
+        <div data-reveal="zoom" data-delay="2" className="relative mx-auto w-full max-w-md md:max-w-none">
           <Image
+            data-parallax
             src="/images/hero-tecnico.png"
             alt="Técnico da PM Cell Vacaria"
             width={1196}
@@ -107,13 +109,13 @@ function Services() {
   return (
     <section id="servicos" className="border-t border-brand/20 bg-navy py-16">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-3xl font-black italic text-white sm:text-4xl">
+        <h2 data-reveal className="text-3xl font-black italic text-white sm:text-4xl">
           Nossos <span className="text-gradient">Serviços</span>
         </h2>
-        <p className="mt-2 text-slate-300">Soluções completas para o seu smartphone, com peças de qualidade e garantia.<span className="sm:hidden"> Arraste para o lado →</span></p>
+        <p data-reveal data-delay="1" className="mt-2 text-slate-300">Soluções completas para o seu smartphone, com peças de qualidade e garantia.<span className="sm:hidden"> Arraste para o lado →</span></p>
         <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <article key={s.id} className="group card w-[78%] shrink-0 snap-center overflow-hidden transition sm:w-auto hover:-translate-y-1 hover:border-cyan/60">
+          {SERVICES.map((s, i) => (
+            <article key={s.id} data-reveal data-delay={String(i % 3)} className="group card w-[78%] shrink-0 snap-center overflow-hidden transition sm:w-auto hover:-translate-y-1 hover:border-cyan/60">
               <div className="relative aspect-[1189/1323]">
                 <Image
                   src={s.image}
@@ -131,7 +133,7 @@ function Services() {
               </div>
             </article>
           ))}
-          <article className="card flex w-[78%] shrink-0 snap-center flex-col justify-center p-6 sm:w-auto">
+          <article data-reveal data-delay="2" className="card flex w-[78%] shrink-0 snap-center flex-col justify-center p-6 sm:w-auto">
             <h3 className="text-2xl font-extrabold text-white">Outro problema?</h3>
             <p className="mt-2 text-slate-300">
               Câmera, alto-falante, microfone, botões, software… Manda o modelo e o defeito que a gente avalia.
@@ -152,15 +154,15 @@ function Blindagem() {
       <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-brand/25 blur-3xl" />
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2">
         <div>
-          <h2 className="text-4xl font-black italic leading-none text-white sm:text-5xl">
+          <h2 data-reveal="left" className="text-4xl font-black italic leading-none text-white sm:text-5xl">
             Blindagem
             <span className="block text-gradient">NanoTitanium</span>
           </h2>
-          <p className="mt-5 text-slate-300">
+          <p data-reveal="left" data-delay="1" className="mt-5 text-slate-300">
             Proteção avançada com tecnologia de cura UV que aumenta a resistência do seu aparelho contra riscos e
             impactos, sem alterar a aparência e a sensibilidade da tela. Para iPhone e Android.
           </p>
-          <ul className="mt-5 space-y-2 text-slate-200">
+          <ul data-reveal="left" data-delay="2" className="mt-5 space-y-2 text-slate-200">
             {[
               "Proteção da tela, traseira e lentes",
               "Mais resistência no dia a dia",
@@ -174,9 +176,11 @@ function Blindagem() {
           </ul>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {BLINDAGEM_PLANS.map((p) => (
+            {BLINDAGEM_PLANS.map((p, i) => (
               <div
                 key={p.id}
+                data-reveal
+                data-delay={String(i + 1)}
                 className={`card relative flex flex-col p-5 ${p.highlight ? "border-cyan/70 shadow-glow" : ""}`}
               >
                 {p.highlight && (
@@ -205,8 +209,9 @@ function Blindagem() {
             ))}
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-md md:max-w-none">
+        <div data-reveal="right" className="relative mx-auto w-full max-w-md md:max-w-none">
           <Image
+            data-scrub
             src="/images/blindagem-iphone.png"
             alt="Blindagem iPhone com tecnologia NanoTitanium"
             width={1189}
@@ -224,8 +229,8 @@ function Trust() {
   return (
     <section id="diferenciais" className="border-y border-brand/20 bg-navy">
       <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-6 px-4 py-8 md:grid-cols-4 md:divide-x md:divide-brand/20">
-        {TRUST_ITEMS.map((t) => (
-          <li key={t.icon} className="flex items-center justify-center gap-3 text-sm leading-tight">
+        {TRUST_ITEMS.map((t, i) => (
+          <li key={t.icon} data-reveal data-delay={String(i)} className="flex items-center justify-center gap-3 text-sm leading-tight">
             <Icon name={t.icon} className="h-9 w-9 shrink-0 text-brand" />
             <span><b className="text-white">{t.title}</b><br /><span className="text-slate-300">{t.sub}</span></span>
           </li>
@@ -240,7 +245,7 @@ function Testimonials() {
   return (
     <section id="avaliacoes" className="py-16">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[260px_1fr]">
-        <div>
+        <div data-reveal>
           <h2 className="text-3xl font-extrabold text-white">
             O que nossos <span className="block font-black italic text-gradient">clientes dizem</span>
           </h2>
@@ -252,8 +257,8 @@ function Testimonials() {
           )}
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="card flex flex-col p-5">
+          {TESTIMONIALS.map((t, i) => (
+            <figure key={t.name} data-reveal data-delay={String(i + 1)} className="card flex flex-col p-5">
               <span className="text-3xl font-black text-brand">“</span>
               <blockquote className="flex-1 text-sm text-slate-200">{t.text}</blockquote>
               <p className="mt-3 text-yellow-400" aria-label="5 estrelas">★★★★★</p>
@@ -272,6 +277,7 @@ function FinalCta() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_60%,rgba(30,123,255,.25),transparent_60%)]" />
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 md:grid-cols-[minmax(0,420px)_1fr]">
         <Image
+          data-reveal="zoom"
           src="/images/whatsapp-mao.png"
           alt="Solicite seu orçamento pelo WhatsApp"
           width={1189}
@@ -279,7 +285,7 @@ function FinalCta() {
           sizes="(max-width: 768px) 90vw, 420px"
           className="mx-auto h-auto w-full max-w-sm rounded-2xl md:max-w-none"
         />
-        <div>
+        <div data-reveal="right" data-delay="1">
           <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             Precisa de um reparo ou quer blindar seu aparelho?
           </h2>
@@ -332,6 +338,7 @@ export default function Page() {
       </main>
       <Footer />
       <FloatingWhats />
+      <ScrollReveal />
     </>
   );
 }
